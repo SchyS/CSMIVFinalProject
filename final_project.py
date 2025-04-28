@@ -5,17 +5,8 @@ import heapq
 # Algorithm 1: Lowest Cost Delivery Between Two Locations
 
 def dijkstra(graph, start, end):
-    """
-    Find the lowest cost delivery route between two locations.
+    #Find the lowest cost delivery route between two locations.
 
-    Args:
-        graph (dict): A weighted graph where keys are nodes and values are lists of (neighbor, weight) tuples.
-        start (str): Starting location.
-        end (str): Ending location.
-
-    Returns:
-        tuple: (path as list of nodes, total cost as int)
-    """
     # Ensure all nodes are keys in the graph
     all_nodes = set(graph.keys())
     for neighbors in graph.values():
@@ -67,16 +58,8 @@ def dijkstra(graph, start, end):
 # Algorithm 2: Best Path from the Hub
 
 def prim(graph, start):
-    """
-    Find the minimum spanning tree (MST) starting from a hub location.
+    #Find the minimum spanning tree (MST) starting from a hub location.
 
-    Args:
-        graph (dict): A weighted graph where keys are nodes and values are lists of (neighbor, weight) tuples.
-        start (str): Starting (hub) location.
-
-    Returns:
-        tuple: (MST as list of (from, to, cost), total MST cost as int)
-    """
     MST = []
     visited = set()
     total_cost = 0
@@ -106,18 +89,8 @@ def prim(graph, start):
 # Algorithm 3: Dynamic Network Changes
 
 def dynamic_mst(graph, start, removed_edges, added_edges):
-    """
-    Adapt MST dynamically after changes in the graph.
+    #Adapt MST dynamically after changes in the graph.
 
-    Args:
-        graph (dict): A weighted graph where keys are nodes and values are lists of (neighbor, weight) tuples.
-        start (str): Hub location.
-        removed_edges (list): List of edges to remove, each in "Node1-Node2" format.
-        added_edges (list): List of edges to add, each as (Node1, Node2, weight) tuple.
-
-    Returns:
-        tuple: (Updated MST, total cost)
-    """
     # Remove edges
     for edge in removed_edges:
         node1, node2 = edge.split('-')
@@ -133,9 +106,7 @@ def dynamic_mst(graph, start, removed_edges, added_edges):
     # Recompute MST using updated graph
     return prim(graph, start)
 
-# ------------------------------
 # Test Cases (Examples)
-# ------------------------------
 
 if __name__ == "__main__":
     example_graph = {
